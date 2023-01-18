@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:memory/extension.dart';
 
+import 'per_ide_num.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -90,6 +92,14 @@ class _TitleListState extends State<TitleList> {
                       tileColor: Colors.white,
                       leading: Icon(Icons.people),
                       title: Text('タイトル'),
+                      onTap: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return PerIdeNum(
+                            title: 'MEMO;RY',
+                          );
+                        }));
+                      },
                     ),
                   ),
                 );
