@@ -92,7 +92,6 @@ class _MyHomePageState extends State<MyHomePage> {
                         tileColor: Colors.white,
                         leading: Icon(Icons.people),
                         title: Text(title[index]),
-                        // title: Text('3件'),
                         trailing: Icon(Icons.more_vert),
                         onTap: () {
                           Navigator.of(context)

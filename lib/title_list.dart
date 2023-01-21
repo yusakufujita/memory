@@ -3,25 +3,6 @@ import 'package:memory/extension.dart';
 
 import 'per_ide_num.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const TitleList(title: 'MEMO;RY'),
-    );
-  }
-}
-
 class TitleList extends StatefulWidget {
   const TitleList({super.key, required this.title});
   final String title;

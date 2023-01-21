@@ -1,23 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memory/extension.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const PerIdeNum(title: 'MEMO;RY'),
-    );
-  }
-}
-
 class PerIdeNum extends StatefulWidget {
   const PerIdeNum({super.key, required this.title});
   final String title;
