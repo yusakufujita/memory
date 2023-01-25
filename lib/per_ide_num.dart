@@ -76,6 +76,9 @@ class _PerIdeNumState extends State<PerIdeNum> {
               )),
         ],
       )),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [],
+      ),
     );
   }
 }
