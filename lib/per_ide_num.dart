@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memory/extension.dart';
+//必要なウィジェットをimportする
+import 'package:memory/widgets/custom_bottom_navigation_bar.dart';
 
 class PerIdeNum extends StatefulWidget {
   const PerIdeNum({super.key, required this.title});
@@ -76,9 +78,8 @@ class _PerIdeNumState extends State<PerIdeNum> {
               )),
         ],
       )),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [],
-      ),
+      //カスタムしたBottomNavigationBarを呼び出す
+      bottomNavigationBar: const CustomBottomNavigationBar(),
     );
   }
 }
