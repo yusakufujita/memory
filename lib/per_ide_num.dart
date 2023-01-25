@@ -19,7 +19,7 @@ class _PerIdeNumState extends State<PerIdeNum> {
         iconTheme: IconThemeData(color: HexColor('#000000')), // ここで色を決めることができる。
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
       ),
       body: Center(
