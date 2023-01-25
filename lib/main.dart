@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory/per_ide_num.dart';
 
 import 'title_list.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'MEMO;RY'),
+      home: const PerIdeNum(title: 'MEMO;RY'),
     );
   }
 }

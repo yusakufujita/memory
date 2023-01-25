@@ -19,7 +19,7 @@ class _PerIdeNumState extends State<PerIdeNum> {
         iconTheme: IconThemeData(color: HexColor('#000000')), // ここで色を決めることができる。
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
       ),
       body: Center(
@@ -32,7 +32,7 @@ class _PerIdeNumState extends State<PerIdeNum> {
             height: 40,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween, // <= 追加
-              children: <Widget>[
+              children: const <Widget>[
                 // main.dartから渡ってきた値を動的に入れる
                 Text(
                   '暗証番号',
@@ -59,7 +59,7 @@ class _PerIdeNumState extends State<PerIdeNum> {
                 bottom: 5,
               ),
               child: Column(
-                children: <Widget>[
+                children: const <Widget>[
                   TextField(
                     decoration: InputDecoration(
                         border: InputBorder.none, hintText: 'タイトル'),
