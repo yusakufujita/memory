@@ -35,7 +35,7 @@ class _TitleListState extends State<TitleList> {
             height: 40,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween, // <= 追加
-              children: <Widget>[
+              children: const <Widget>[
                 // main.dartから渡ってきた値を動的に入れる
                 Text(
                   '暗証番号',
@@ -71,7 +71,7 @@ class _TitleListState extends State<TitleList> {
                   child: Card(
                     child: ListTile(
                       tileColor: Colors.white,
-                      leading: Icon(Icons.people),
+                      leading: Image.asset('images/key.jpg'),
                       title: Text('タイトル'),
                       onTap: () {
                         Navigator.of(context)

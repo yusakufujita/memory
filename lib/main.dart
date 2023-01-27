@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:memory/extension.dart';
 
 import 'title_list.dart';
 
@@ -32,6 +33,25 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
+  List<String> iconImage = [
+    "images/key_image.jpg",
+    "images/bank_image.jpg",
+    "images/key_image.jpg",
+    "images/phone_image.jpg",
+    "images/address_image.jpg",
+    "images/people_image.jpg",
+    "images/address_image.jpg",
+    "images/address_image.jpg",
+    "images/address_image.jpg",
+    "images/address_image.jpg",
+    "images/address_image.jpg",
+    "images/address_image.jpg",
+    "images/address_image.jpg",
+    "images/address_image.jpg",
+    "images/address_image.jpg",
+    "images/address_image.jpg",
+  ];
+
   List<String> title = [
     "暗証番号",
     "銀行口座",
@@ -54,22 +74,41 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: HexColor('#000000')),
         backgroundColor: Colors.white,
         title: Text(
           widget.title,
           style: TextStyle(color: Colors.black),
         ),
       ),
+      endDrawer: SizedBox(
+          width: double.infinity,
+          child: Drawer(
+            child: ListView(
+              children: const [
+                DrawerHeader(
+                    decoration: BoxDecoration(color: Colors.yellowAccent),
+                    child: Text("MEMO;RY")),
+                ListTile(title: Text("アプリの使い方")),
+                ListTile(title: Text("パスワード管理")),
+                ListTile(title: Text("利用規約"))
+              ],
+            ),
+          )),
       body: Center(
         child: Column(
           children: [
-            //検索窓を書く
             Container(
-              padding:
-                  const EdgeInsets.only(left: 32, right: 32, bottom: 0, top: 0),
-              height: 40,
+              padding: const EdgeInsets.only(
+                  left: 32, right: 32, bottom: 0, top: 12),
+              height: 50,
               child: TextFormField(
-                decoration: InputDecoration(border: OutlineInputBorder()),
+                decoration: const InputDecoration(
+                    fillColor: Colors.white,
+                    filled: true,
+                    hintText: '検索',
+                    suffixIcon: Icon(Icons.search),
+                    border: InputBorder.none),
               ),
             ),
             SizedBox(height: 15),
@@ -90,8 +129,17 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Card(
                       child: ListTile(
                         tileColor: Colors.white,
-                        leading: Icon(Icons.people),
-                        title: Text(title[index]),
+                        leading: Image.asset(iconImage[index]),
+                        title: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(title[index]),
+                              SizedBox(
+                                // Containerは、色をつける　後でけす
+                                width: 60,
+                              ),
+                              Text('28'),
+                            ]),
                         trailing: Icon(Icons.more_vert),
                         onTap: () {
                           Navigator.of(context)
