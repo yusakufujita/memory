@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memory/extension.dart';
+// import 'package:memory/widgets/custom_bottom_navigation_bar_widget.dart';
 // import 'package:memory/widgets/custom_form_widget.dart';
 
 class PerIdeNum extends StatefulWidget {
@@ -13,18 +14,19 @@ class _PerIdeNumState extends State<PerIdeNum> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          bottomOpacity: 0.0,
-          elevation: 0.0,
-          backgroundColor: HexColor('#FFFFFF'),
-          iconTheme:
-              IconThemeData(color: HexColor('#000000')), // ここで色を決めることができる。
-          title: Text(
-            widget.title,
-            style: const TextStyle(color: Colors.black),
-          ),
+      appBar: AppBar(
+        bottomOpacity: 0.0,
+        elevation: 0.0,
+        backgroundColor: HexColor('#FFFFFF'),
+        iconTheme: IconThemeData(color: HexColor('#000000')), // ここで色を決めることができる。
+        title: Text(
+          widget.title,
+          style: const TextStyle(color: Colors.black),
         ),
-        body: Parts('暗証番号'));
+      ),
+      body: Parts('暗証番号'),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
+    );
   }
 }
 
@@ -51,8 +53,8 @@ class _PartsState extends State<Parts> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween, // <= 追加
             children: <Widget>[
               // main.dartから渡ってきた値を動的に入れる
-              Text(
-                'MEMO;RY',
+              const Text(
+                '暗証番号',
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -71,20 +73,67 @@ class _PartsState extends State<Parts> {
             ),
             child: Column(
               children: const <Widget>[
-                TextField(
-                  decoration: InputDecoration(
-                      border: InputBorder.none, hintText: 'タイトル'),
-                ),
-                TextField(
-                  decoration:
-                      InputDecoration(border: InputBorder.none, hintText: '番号'),
-                ),
-                TextField(
-                  decoration:
-                      InputDecoration(border: InputBorder.none, hintText: '備考'),
-                ),
+                CustomFormWidget("タイトル", 30),
+                CustomFormWidget("番号", 30),
+                CustomFormWidget("備考", 30)
               ],
             )),
+      ],
+    );
+  }
+}
+
+class CustomFormWidget extends StatelessWidget {
+  final String title;
+  final double height;
+  const CustomFormWidget(this.title, this.height);
+
+  @override
+  Widget build(BuildContext context) {
+    //titleとheightはコンストラクタで都度、入れ替えるのでconstは付かない
+    return TextField(
+      decoration: InputDecoration(
+        hintText: title,
+        border: InputBorder.none,
+        //高さを変更するためのパラメータ。下の高さしか必要なかったので、bottomのみ指定
+        contentPadding: EdgeInsets.only(bottom: height),
+      ),
+    );
+  }
+}
+
+class CustomBottomNavigationBar extends StatelessWidget {
+  const CustomBottomNavigationBar({Key? key}) : super(key: key);
+  //onTapで入力されたindexを使って、実行するメソッドを選択する
+  void methodSwitcher(int index) {
+    switch (index) {
+      case 0:
+        print("メソッドA");
+        break;
+      case 1:
+        print("メソッドB");
+        break;
+      case 2:
+        print("メソッドC");
+        break;
+      case 3:
+        print("メソッドD");
+        break;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      onTap: methodSwitcher,
+      //なぜか3つ以上だと表示されず、fixedを付けると解消されるようです
+      type: BottomNavigationBarType.fixed,
+      items: const [
+        //どうやらlabelは必須のため、空の値を入れておきました
+        BottomNavigationBarItem(icon: Icon(Icons.copy), label: "コピー"),
+        BottomNavigationBarItem(icon: Icon(Icons.screenshot), label: ""),
+        BottomNavigationBarItem(icon: Icon(Icons.upload), label: ""),
+        BottomNavigationBarItem(icon: Icon(Icons.delete), label: ""),
       ],
     );
   }

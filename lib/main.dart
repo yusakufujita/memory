@@ -134,17 +134,23 @@ class _MyHomePageState extends State<MyHomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Text(title[index]),
-                              SizedBox(
+                              const SizedBox(
                                 // Containerは、色をつける　後でけす
                                 width: 60,
                               ),
-                              Text('28'),
+                              SizedBox(
+                                height: 72,
+                                width: 85,
+                                child: Row(
+                                  children: [Text('28'), Text('件')],
+                                ),
+                              ),
                             ]),
                         trailing: Icon(Icons.more_vert),
                         onTap: () {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (context) {
-                            return TitleList(
+                            return const TitleList(
                               title: "MEMO;RY",
                             );
                           }));

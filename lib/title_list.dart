@@ -76,6 +76,7 @@ class _TitleListState extends State<TitleList> {
                       onTap: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
+                          // 保存する形式によってreturnするファイルを変更する main.swiftからきた値を見てswitch文
                           return PerIdeNum(
                             title: 'MEMO;RY',
                           );
