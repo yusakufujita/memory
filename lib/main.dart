@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:memory/extension.dart';
-
-import 'title_list.dart';
+import 'package:memory/per_ide_num.dart';
 
 void main() {
   runApp(const MyApp());
@@ -78,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
       ),
       endDrawer: SizedBox(
@@ -111,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     border: InputBorder.none),
               ),
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             Container(
               height: 600,
               child: ListView.builder(
@@ -142,15 +141,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                 height: 72,
                                 width: 85,
                                 child: Row(
-                                  children: [Text('28'), Text('件')],
+                                  children: const [Text('28'), Text('件')],
                                 ),
                               ),
                             ]),
-                        trailing: Icon(Icons.more_vert),
+                        //ペンアイコンに変更
+                        trailing: const Icon(Icons.edit),
                         onTap: () {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (context) {
-                            return const TitleList(
+                            //メモの新規作成画面へ遷移
+                            return const PerIdeNum(
                               title: "MEMO;RY",
                             );
                           }));
