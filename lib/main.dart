@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         title: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              SizedBox(width: 100, child: Text(title[index])),
+                              SizedBox(width: 108, child: Text(title[index])),
                               SizedBox(
                                 height: 72,
                                 width: 85,
