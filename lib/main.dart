@@ -131,13 +131,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         tileColor: Colors.white,
                         leading: Image.asset(iconImage[index]),
                         title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(title[index]),
-                              const SizedBox(
-                                // Containerは、色をつける　後でけす
-                                width: 60,
-                              ),
+                              SizedBox(width: 100, child: Text(title[index])),
                               SizedBox(
                                 height: 72,
                                 width: 85,
