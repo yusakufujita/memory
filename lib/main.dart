@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memory/extension.dart';
-
-import 'title_list.dart';
+import 'package:memory/per_ide_num.dart';
+import 'package:memory/title_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
   List<String> iconImage = [
     "images/key_image.jpg",
     "images/bank_image.jpg",
@@ -71,6 +70,25 @@ class _MyHomePageState extends State<MyHomePage> {
     "計算",
   ];
 
+  //TitleListへ遷移するメソッド
+  void navigationToTitleList() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return const TitleList(
+        title: "MEMO;RY",
+      );
+    }));
+  }
+
+  //PerIdeNumへ遷移するメソッド
+  void navigationToPerIdeNum() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return const PerIdeNum(
+        title: "MEMO;RY",
+      );
+    }));
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -78,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
       ),
       endDrawer: SizedBox(
@@ -111,8 +129,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     border: InputBorder.none),
               ),
             ),
-            SizedBox(height: 15),
-            Container(
+            const SizedBox(height: 15),
+            SizedBox(
               height: 600,
               child: ListView.builder(
                 itemCount: 16, // この行を追加
@@ -129,28 +147,34 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Card(
                       child: ListTile(
                         tileColor: Colors.white,
-                        leading: Image.asset(iconImage[index]),
-                        title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(width: 108, child: Text(title[index])),
-                              SizedBox(
-                                height: 72,
-                                width: 85,
-                                child: Row(
-                                  children: [Text('28'), Text('件')],
+                        leading: GestureDetector(
+                          //TitleListへ画面遷移
+                          onTap: navigationToTitleList,
+                          child: Image.asset(iconImage[index]),
+                        ),
+                        title: GestureDetector(
+                          //TitleListへ画面遷移
+                          onTap: navigationToTitleList,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(title[index]),
+                                const SizedBox(
+                                  // Containerは、色をつける　後でけす
+                                  width: 60,
                                 ),
-                              ),
-                            ]),
-                        trailing: Icon(Icons.more_vert),
-                        onTap: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) {
-                            return const TitleList(
-                              title: "MEMO;RY",
-                            );
-                          }));
-                        },
+                                SizedBox(
+                                  height: 72,
+                                  width: 85,
+                                  child: Row(
+                                    children: const [Text('28'), Text('件')],
+                                  ),
+                                ),
+                              ]),
+                        ),
+                        trailing: Image.asset("images/edit_image.jpg"),
+                        //PerIdeNumへ画面遷移
+                        onTap: navigationToPerIdeNum,
                       ),
                     ),
                   );
