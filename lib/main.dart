@@ -31,7 +31,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  @override
   List<String> iconImage = [
     "images/key_image.jpg",
     "images/bank_image.jpg",
@@ -70,6 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
     "計算",
   ];
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(height: 15),
-            Container(
+            SizedBox(
               height: 600,
               child: ListView.builder(
                 itemCount: 16, // この行を追加
@@ -145,8 +145,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ),
                             ]),
-                        //ペンアイコンに変更
-                        trailing: const Icon(Icons.edit),
+                        //編集アイコンを設定
+                        trailing: Image.asset("images/edit_image.jpg"),
                         onTap: () {
                           Navigator.of(context)
                               .push(MaterialPageRoute(builder: (context) {
