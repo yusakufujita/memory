@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:memory/extension.dart';
 import 'package:memory/per_ide_num.dart';
+import 'package:memory/title_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -69,6 +70,24 @@ class _MyHomePageState extends State<MyHomePage> {
     "計算",
   ];
 
+  //TitleListへ遷移するメソッド
+  void navigationToTitleList() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return const TitleList(
+        title: "MEMO;RY",
+      );
+    }));
+  }
+
+  //PerIdeNumへ遷移するメソッド
+  void navigationToPerIdeNum() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return const PerIdeNum(
+        title: "MEMO;RY",
+      );
+    }));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -128,34 +147,34 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Card(
                       child: ListTile(
                         tileColor: Colors.white,
-                        leading: Image.asset(iconImage[index]),
-                        title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(title[index]),
-                              const SizedBox(
-                                // Containerは、色をつける　後でけす
-                                width: 60,
-                              ),
-                              SizedBox(
-                                height: 72,
-                                width: 85,
-                                child: Row(
-                                  children: const [Text('28'), Text('件')],
+                        leading: GestureDetector(
+                          //TitleListへ画面遷移
+                          onTap: navigationToTitleList,
+                          child: Image.asset(iconImage[index]),
+                        ),
+                        title: GestureDetector(
+                          //TitleListへ画面遷移
+                          onTap: navigationToTitleList,
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                Text(title[index]),
+                                const SizedBox(
+                                  // Containerは、色をつける　後でけす
+                                  width: 60,
                                 ),
-                              ),
-                            ]),
-                        //編集アイコンを設定
+                                SizedBox(
+                                  height: 72,
+                                  width: 85,
+                                  child: Row(
+                                    children: const [Text('28'), Text('件')],
+                                  ),
+                                ),
+                              ]),
+                        ),
                         trailing: Image.asset("images/edit_image.jpg"),
-                        onTap: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) {
-                            //メモの新規作成画面へ遷移
-                            return const PerIdeNum(
-                              title: "MEMO;RY",
-                            );
-                          }));
-                        },
+                        //PerIdeNumへ画面遷移
+                        onTap: navigationToPerIdeNum,
                       ),
                     ),
                   );
