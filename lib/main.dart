@@ -167,7 +167,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                   height: 72,
                                   width: 85,
                                   child: Row(
-                                    children: const [Text('28'), Text('件')],
+                                    children: const [
+                                      Text(
+                                        '28',
+                                        style: TextStyle(
+                                            fontSize: 34,
+                                            fontWeight: FontWeight.bold,
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: Color(0xff68C8CE)),
+                                      ),
+                                      Text('件')
+                                    ],
                                   ),
                                 ),
                               ]),
