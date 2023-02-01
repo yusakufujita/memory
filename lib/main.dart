@@ -156,13 +156,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           //TitleListへ画面遷移
                           onTap: navigationToTitleList,
                           child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(title[index]),
-                                const SizedBox(
-                                  // Containerは、色をつける　後でけす
-                                  width: 60,
-                                ),
+                                SizedBox(width: 108, child: Text(title[index])),
                                 SizedBox(
                                   height: 72,
                                   width: 85,
