@@ -179,9 +179,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ),
                               ]),
                         ),
-                        trailing: Image.asset("images/edit_image.jpg"),
-                        //PerIdeNumへ画面遷移
-                        onTap: navigationToPerIdeNum,
+                        trailing: GestureDetector(
+                          onTap: navigationToPerIdeNum,
+                          child: Image.asset("images/edit_image.jpg"),
+                        ),
                       ),
                     ),
                   );
