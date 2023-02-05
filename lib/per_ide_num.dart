@@ -131,9 +131,9 @@ class CustomBottomNavigationBar extends StatelessWidget {
       items: const [
         //どうやらlabelは必須のため、空の値を入れておきました
         BottomNavigationBarItem(icon: Icon(Icons.copy), label: "コピー"),
-        BottomNavigationBarItem(icon: Icon(Icons.screenshot), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.upload), label: ""),
-        BottomNavigationBarItem(icon: Icon(Icons.delete), label: ""),
+        BottomNavigationBarItem(icon: Icon(Icons.screenshot), label: "画面コピー"),
+        BottomNavigationBarItem(icon: Icon(Icons.upload), label: "共有"),
+        BottomNavigationBarItem(icon: Icon(Icons.delete), label: "削除"),
       ],
     );
   }

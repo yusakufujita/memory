@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     "images/key_image.jpg",
     "images/phone_image.jpg",
     "images/address_image.jpg",
-    "images/people_image.jpg",
+    /*"images/people_image.jpg",
     "images/address_image.jpg",
     "images/address_image.jpg",
     "images/address_image.jpg",
@@ -48,16 +48,16 @@ class _MyHomePageState extends State<MyHomePage> {
     "images/address_image.jpg",
     "images/address_image.jpg",
     "images/address_image.jpg",
-    "images/address_image.jpg",
+    "images/address_image.jpg",*/
   ];
 
   List<String> title = [
     "暗証番号",
     "銀行口座",
     "ID/PASS",
-    "館員番号",
+    "電話番号",
     "クレカ",
-    "フリー",
+    /*"フリー",
     "文字数カウント",
     "日記",
     "人物",
@@ -67,14 +67,15 @@ class _MyHomePageState extends State<MyHomePage> {
     "グルメ",
     "タスク",
     "買い物",
-    "計算",
+    "計算",*/
   ];
 
   //TitleListへ遷移するメソッド
-  void navigationToTitleList() {
+  void navigationToTitleList(memoTitle: String) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return const TitleList(
         title: "MEMO;RY",
+        memoTitle: memoTitle
       );
     }));
   }
@@ -104,12 +105,18 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Drawer(
             child: ListView(
               children: const [
-                DrawerHeader(
-                    decoration: BoxDecoration(color: Colors.yellowAccent),
-                    child: Text("MEMO;RY")),
+                SizedBox(
+                  height: 100,
+                  child: DrawerHeader(
+                      decoration: BoxDecoration(color: Colors.white),
+                      child: SizedBox(child: Text("MEMO;RY"))),
+                ),
                 ListTile(title: Text("アプリの使い方")),
                 ListTile(title: Text("パスワード管理")),
-                ListTile(title: Text("利用規約"))
+                ListTile(title: Text("利用規約")),
+                ListTile(title: Text("プライバシーポリシー")),
+                ListTile(title: Text("運営会社")),
+                ListTile(title: Text("お問い合わせ"))
               ],
             ),
           )),
@@ -133,7 +140,8 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               height: 600,
               child: ListView.builder(
-                itemCount: 16, // この行を追加
+                //デザインが決まらないので、とりあえず5行
+                itemCount: 5, // この行を追加
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     padding: const EdgeInsets.only(
@@ -154,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         title: GestureDetector(
                           //TitleListへ画面遷移
-                          onTap: navigationToTitleList,
+                          onTap: navigationToTitleList(title[index]),
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
