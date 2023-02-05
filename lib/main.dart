@@ -70,22 +70,14 @@ class _MyHomePageState extends State<MyHomePage> {
     "計算",*/
   ];
 
-  //TitleListへ遷移するメソッド
-  void navigationToTitleList(memoTitle: String) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return const TitleList(
-        title: "MEMO;RY",
-        memoTitle: memoTitle
-      );
-    }));
-  }
+  List<Widget> navigationList = [
+    PerIdeNum(title: "MEMO;RY"),
+  ];
 
-  //PerIdeNumへ遷移するメソッド
-  void navigationToPerIdeNum() {
+  void navigation(int index) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return const PerIdeNum(
-        title: "MEMO;RY",
-      );
+      //indexを使用しているが、検索機能によっては変更の可能性あり
+      return navigationList[index];
     }));
   }
 
