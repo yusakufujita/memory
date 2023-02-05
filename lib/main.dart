@@ -70,22 +70,31 @@ class _MyHomePageState extends State<MyHomePage> {
     "計算",*/
   ];
 
-  //TitleListへ遷移するメソッド
-  void navigationToTitleList(memoTitle: String) {
+  //TitleListの画面リスト
+  List<Widget> titleListNavigationList = [
+    const TitleList(title: "MEMO;RY"),
+    const TitleList(title: "MEMO;RY"),
+  ];
+
+  //PerIdeNumの画面リスト
+  List<Widget> perIdeNumNavigationList = [
+    const PerIdeNum(title: "MEMO;RY"),
+    const PerIdeNum(title: "MEMO;RY"),
+  ];
+
+  //indexに対応するTitleList（メモ一覧画面）に画面遷移
+  void titleListNavigation(int index) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return const TitleList(
-        title: "MEMO;RY",
-        memoTitle: memoTitle
-      );
+      //indexを使用しているが、検索機能によっては変更の可能性あり
+      return titleListNavigationList[index];
     }));
   }
 
-  //PerIdeNumへ遷移するメソッド
-  void navigationToPerIdeNum() {
+  //indexに対応するPerIdeNum（メモ編集画面）に画面遷移
+  void perIdeNumNavigation(int index) {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return const PerIdeNum(
-        title: "MEMO;RY",
-      );
+      //indexを使用しているが、検索機能によっては変更の可能性あり
+      return perIdeNumNavigationList[index];
     }));
   }
 
@@ -156,13 +165,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: ListTile(
                         tileColor: Colors.white,
                         leading: GestureDetector(
-                          //TitleListへ画面遷移
-                          onTap: navigationToTitleList,
+                          //indexに対応するTitleList（メモ一覧画面）に画面遷移
+                          onTap: () {
+                            titleListNavigation(index);
+                          },
                           child: Image.asset(iconImage[index]),
                         ),
                         title: GestureDetector(
-                          //TitleListへ画面遷移
-                          onTap: navigationToTitleList(title[index]),
+                          //indexに対応するTitleList（メモ一覧画面）に画面遷移
+                          onTap: () {
+                            titleListNavigation(index);
+                          },
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -188,7 +201,10 @@ class _MyHomePageState extends State<MyHomePage> {
                               ]),
                         ),
                         trailing: GestureDetector(
-                          onTap: navigationToPerIdeNum,
+                          //indexに対応するPerIdeNum（メモ編集画面）に画面遷移
+                          onTap: () {
+                            perIdeNumNavigation(index);
+                          },
                           child: Image.asset("images/edit_image.jpg"),
                         ),
                       ),
