@@ -14,4 +14,8 @@ class RealmServices extends ChangeNotifier {
     final newPassword = Password(ObjectId(), title, password);
     realm.write<Password>(() => realm.add<Password>(newPassword));
   }
+
+  void deletePassword(Password password) {
+    realm.write(() => realm.delete(password));
+  }
 }
