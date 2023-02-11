@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:memory/extension.dart';
 import 'package:memory/per_ide_num.dart';
+import 'package:memory/realm/realm_services.dart';
 import 'package:memory/title_list.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => RealmServices())],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -71,11 +79,11 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   //TitleListへ遷移するメソッド
-  void navigationToTitleList(memoTitle: String) {
+  void navigationToTitleList() {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return const TitleList(
         title: "MEMO;RY",
-        memoTitle: memoTitle
+        //memoTitle: memoTitle
       );
     }));
   }
@@ -162,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                         title: GestureDetector(
                           //TitleListへ画面遷移
-                          onTap: navigationToTitleList(title[index]),
+                          onTap: navigationToTitleList,
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
