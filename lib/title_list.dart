@@ -4,8 +4,10 @@ import 'package:memory/extension.dart';
 import 'per_ide_num.dart';
 
 class TitleList extends StatefulWidget {
-  const TitleList({super.key, required this.title});
+  const TitleList(
+      {super.key, required this.title, required this.memoTypeTitle});
   final String title;
+  final String memoTypeTitle;
 
   @override
   State<TitleList> createState() => _TitleListState();
@@ -35,9 +37,10 @@ class _TitleListState extends State<TitleList> {
             height: 40,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween, // <= 追加
-              children: <Widget>[
+              children: const <Widget>[
                 // main.dartから渡ってきた値を動的に入れる
                 Text(
+                  // 下記にwidget.memoTypeTitleと書いてもエラーが発生する
                   '暗証番号',
                   style: TextStyle(
                     fontSize: 16,
@@ -71,11 +74,12 @@ class _TitleListState extends State<TitleList> {
                   child: Card(
                     child: ListTile(
                       tileColor: Colors.white,
-                      leading: Icon(Icons.people),
+                      leading: Image.asset('images/key.jpg'),
                       title: Text('タイトル'),
                       onTap: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
+                          // 保存する形式によってreturnするファイルを変更する main.swiftからきた値を見てswitch文
                           return PerIdeNum(
                             title: 'MEMO;RY',
                           );
