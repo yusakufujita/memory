@@ -4,8 +4,10 @@ import 'package:memory/extension.dart';
 import 'per_ide_num.dart';
 
 class TitleList extends StatefulWidget {
-  const TitleList({super.key, required this.title});
+  const TitleList(
+      {super.key, required this.title, required this.memoTypeTitle});
   final String title;
+  final String memoTypeTitle;
 
   @override
   State<TitleList> createState() => _TitleListState();
@@ -38,6 +40,7 @@ class _TitleListState extends State<TitleList> {
               children: const <Widget>[
                 // main.dartから渡ってきた値を動的に入れる
                 Text(
+                  // 下記にwidget.memoTypeTitleと書いてもエラーが発生する
                   '暗証番号',
                   style: TextStyle(
                     fontSize: 16,
